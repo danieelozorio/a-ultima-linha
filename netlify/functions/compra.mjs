@@ -1,8 +1,25 @@
 // Recebe o aviso de compra (webhook) da Hotmart ou da Kiwify e libera ou bloqueia o leitor.
-// Endereço: https://SEU-SITE/.netlify/functions/compra?key=SEU_WEBHOOK_SECRET
-// Liberação manual pelo navegador:  ...compra?key=SEGREDO&liberar=email@exemplo.com&nome=Fulano
-// Bloqueio manual pelo navegador:   ...compra?key=SEGREDO&bloquear=email@exemplo.com
-import { sb } from '../lib/supabase.mjs';
+// Liberação manual:  ...compra?key=SEGREDO&liberar=email@exemplo.com&nome=Fulano
+// Bloqueio manual:   ...compra?key=SEGREDO&bloquear=email@exemplo.com
+function cfg() {
+  const url = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
+  const key = process.env.SUPABASE_SERVICE_KEY || '';
+  if (!url || !key) throw new Error('Faltam SUPABASE_URL ou SUPABASE_SERVICE_KEY nas variáveis do Netlify');
+  return { url, key };
+}
+function headers(extra = {}) {
+  const { key } = cfg();
+  const h = { apikey: key, 'Content-Type': 'application/json', ...extra };
+  if (key.startsWith('eyJ')) h.Authorization = 'Bearer ' + key;
+  return h;
+}
+async function sb(path, opts = {}) {
+  const { url } = cfg();
+  const r = await fetch(url + path, { ...opts, headers: headers(opts.headers || {}) });
+  const text = await r.text();
+  let data = null; try { data = text ? JSON.parse(text) : null; } catch { data = text; }
+  return { ok: r.ok, status: r.status, data };
+}
 
 const LIBERA = ['purchase_approved', 'purchase_complete', 'order_approved', 'approved', 'paid', 'complete', 'completed'];
 const BLOQUEIA = ['purchase_refunded', 'purchase_chargeback', 'purchase_canceled', 'purchase_cancelled', 'purchase_protest',
@@ -29,7 +46,6 @@ function interpreta(body) {
   const sinais = [d.event, d.webhook_event_type, d.order_status, d.status, d?.data?.purchase?.status]
     .filter(Boolean).map((s) => String(s).toLowerCase());
   let acao = null;
-  // o "event" tem prioridade; depois o status do pedido
   for (const s of sinais) {
     if (BLOQUEIA.includes(s)) { acao = 'bloquear'; break; }
     if (LIBERA.includes(s)) { acao = 'liberar'; break; }
@@ -46,7 +62,6 @@ async function liberar(email, nome, plataforma) {
     body: JSON.stringify([{ email, nome: nome || null, plataforma, ativo: true, atualizado_em: agora }]),
   });
   if (!up.ok) throw new Error('Erro ao gravar leitor: ' + up.status + ' ' + JSON.stringify(up.data));
-  // cria a conta de login (se já existir, o Supabase responde erro e seguimos em frente)
   const u = await sb('/auth/v1/admin/users', {
     method: 'POST',
     body: JSON.stringify({ email, email_confirm: true, user_metadata: { nome: nome || '' } }),
@@ -73,7 +88,6 @@ export default async (req) => {
   if (!SEGREDO || (chave !== SEGREDO && hottok !== SEGREDO)) return resp(401, { erro: 'não autorizado' });
 
   try {
-    // liberação/bloqueio manual pelo navegador
     const manualL = url.searchParams.get('liberar');
     const manualB = url.searchParams.get('bloquear');
     if (manualL || manualB) {
