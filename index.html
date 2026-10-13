@@ -189,6 +189,44 @@ section{padding-block:clamp(48px,7vw,84px);border-top:1px solid var(--rule)}
 .toc-full select{font:15px var(--display);background:var(--paper);color:var(--ink);border:1px solid var(--rule);padding:8px 10px;max-width:min(420px,80vw)}
 .sheet .exemplar{margin:2.6em 0 0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--polen-muted);letter-spacing:.04em}
 .buy .kz-link{align-self:flex-start;font-family:var(--display);font-size:14px;color:var(--sun);margin-top:4px}
+/* LEITOR+ */
+.rtools{display:flex;justify-content:space-between;align-items:center;gap:8px;max-width:680px;margin:0 auto 12px}
+.rt-mid{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.rt{font-family:var(--display);font-size:13px;letter-spacing:.06em;background:transparent;color:var(--muted);border:1px solid var(--rule);padding:7px 11px;cursor:pointer;min-width:40px;line-height:1.2}
+.rt:hover{color:var(--ink);border-color:var(--sun)}
+.rt[disabled]{opacity:.35;cursor:default}
+.rt[aria-pressed="true"]{color:var(--sun);border-color:var(--sun)}
+.sheet .text{font-size:var(--fs, clamp(17px,1.9vw,18.5px))}
+.sheet .meta{text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--polen-muted);margin:14px 0 0;letter-spacing:.03em;line-height:1.9}
+.sheet .trilha{font:inherit;color:var(--polen-muted);background:none;border:1px solid var(--polen-rule);padding:3px 10px;cursor:pointer;border-radius:999px}
+.sheet .trilha:hover{color:var(--polen-ink)}
+.sheet[data-papel="branco"]{--polen:#FAF8F3;--polen-edge:#E9E5DC;--polen-ink:#1E1C19;--polen-muted:#6D675E;--polen-rule:#DAD5CA}
+.sheet[data-papel="noite"]{--polen:#1D1A16;--polen-edge:#2A251F;--polen-ink:#D8CFBE;--polen-muted:#958A78;--polen-rule:#3A332A;background-image:none}
+.toc button.lido::after{content:" ✓";color:var(--sun)}
+.toc button[aria-current="true"].lido::after{color:var(--wall)}
+.luz{position:fixed;left:0;top:0;height:2px;width:0;background:var(--sun);box-shadow:0 0 10px 2px var(--sun-soft),0 0 2px var(--sun);z-index:40;pointer-events:none;transition:width .15s linear}
+.falta{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;font-family:var(--mono);font-size:12px;color:var(--ink);background:color-mix(in srgb,var(--paper) 92%,transparent);border:1px solid var(--rule);padding:6px 10px;opacity:0;transition:opacity .4s;pointer-events:none}
+.falta.on{opacity:1}
+.foco-sair{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:45;font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:color-mix(in srgb,var(--paper) 85%,transparent);color:var(--muted);border:1px solid var(--rule);padding:7px 12px;cursor:pointer}
+body.foco .tabs,body.foco footer,body.foco #toc,body.foco #toc-full-wrap,body.foco .kz-strip,body.foco .acc,body.foco #free-txt,body.foco .free-login,body.foco .rtools,body.foco .snd{display:none!important}
+body.foco .reader-wrap{padding-top:28px}
+.fim,.recado{max-width:680px;margin:26px auto 0}
+.recado form{display:flex;flex-direction:column;gap:8px;border:1px solid var(--rule);padding:clamp(18px,4vw,28px)}
+.recado input,.recado textarea{background:var(--paper);color:var(--ink);border:1px solid var(--rule);font:16px/1.5 var(--body);padding:10px 12px;width:100%}
+.recado textarea{resize:vertical}
+.recado .buy-btn{cursor:pointer;margin-top:6px}
+.recado-intro{margin:0 0 6px;color:var(--muted)}
+.continuar{display:block;margin-top:14px;background:none;border:0;padding:0;color:var(--ink);font:15px var(--display);letter-spacing:.04em;cursor:pointer;text-align:left}
+.continuar b{color:var(--sun);font-weight:500}
+.continuar:hover{color:var(--sun)}
+.trecho-btn{position:fixed;z-index:50;font-family:var(--display);font-size:13px;letter-spacing:.08em;background:var(--sun);color:#12100D;border:0;padding:9px 14px;cursor:pointer;box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
+.h1612-toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:46;font-family:var(--mono);font-size:13px;letter-spacing:.3em;color:var(--sun);opacity:0;transition:opacity 1.2s;pointer-events:none}
+body.h1612 .h1612-toast{opacity:.9}
+body.h1612 .sheet{transform:rotate(-.7deg);transition:transform 2.4s ease}
+body.h1612 .luz{background:#fff6e0}
+.sheet{transition:transform 2.4s ease}
+@media (prefers-reduced-motion:reduce){body.h1612 .sheet{transform:none}}
+@media (max-width:560px){.reader-wrap{padding-inline:6px}.sheet{padding:26px 17px 34px}.rt{padding:7px 9px;min-width:36px}}
 /* SONS */
 .snd{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 .snd-toggle{font-family:var(--display);font-size:13px;letter-spacing:.16em;text-transform:uppercase;background:var(--paper);color:var(--ink);border:1px solid var(--rule);padding:11px 16px;cursor:pointer;box-shadow:0 10px 30px -12px rgba(0,0,0,.8)}
@@ -251,6 +289,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
       <div class="cta-free">
         <button class="cta-big" type="button" data-tab="ler"><span class="cta-gratis">Grátis</span><span>Leia os cinco primeiros capítulos de graça&nbsp;→</span></button>
         <p class="cta-sub">Prólogo e capítulos 1 a 5 · direto aqui no site</p>
+        <button class="continuar" id="continuar" type="button" hidden>Continuar de onde parei · <b id="continuar-txt"></b> →</button>
       </div>
     </div>
   </div>
@@ -486,7 +525,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
   <div class="wrap reader-wrap" id="leitura" hidden>
     <p class="kz-strip" id="kz-strip"></p>
     <p class="free" id="free-txt">Leitura gratuita · prólogo e capítulos 1 a 5</p>
-    <p class="acc" id="acc" hidden><span id="acc-txt"></span> · <button class="kz-link" type="button" id="acc-sair">sair</button></p>
+    <p class="acc" id="acc" hidden><span id="acc-txt"></span> · <button class="kz-link" type="button" id="acc-pdf">baixar PDF</button> · <button class="kz-link" type="button" id="acc-sair">sair</button></p>
     <p class="free-login" id="free-login" hidden>Já comprou o livro? <button class="kz-link" type="button" data-acesso>Entrar para ler tudo</button></p>
     <label class="toc-full" id="toc-full-wrap" hidden><span class="field">capítulo</span><select id="toc-full"></select></label>
     <div class="toc" id="toc" aria-label="Capítulos da amostra">
@@ -497,11 +536,42 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
       <button type="button">4 · Controle</button>
       <button type="button">5 · Cauda</button>
     </div>
-    <article class="sheet" id="sheet" aria-live="polite"></article>
+    <div class="rtools" id="rtools">
+      <button type="button" class="rt" id="t-prev" aria-label="Capítulo anterior">←</button>
+      <div class="rt-mid">
+        <button type="button" class="rt" id="t-menos" aria-label="Diminuir a letra">A−</button>
+        <button type="button" class="rt" id="t-mais" aria-label="Aumentar a letra">A+</button>
+        <button type="button" class="rt" id="t-papel" aria-label="Trocar a cor do papel">◐ <span id="t-papel-n">pólen</span></button>
+        <button type="button" class="rt" id="t-foco" aria-pressed="false">⤢ foco</button>
+      </div>
+      <button type="button" class="rt" id="t-next" aria-label="Próximo capítulo">→</button>
+    </div>
+    <article class="sheet" id="sheet"></article>
     <div class="pager">
       <button type="button" id="prev">← Anterior</button>
       <span class="pos" id="pos"></span>
       <button type="button" id="next">Próximo →</button>
+    </div>
+    <div class="fim" id="fim" hidden>
+      <div class="kz-term">
+        <p class="kz-head"><span><b>KAIRÓS</b> · registro</span><span id="fim-clock"></span></p>
+        <div class="kz-log" id="fim-log" style="margin-top:0"></div>
+      </div>
+    </div>
+    <div class="recado" id="recado" hidden>
+      <form name="recados" id="recado-f" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="recados">
+        <p hidden><label>Não preencha: <input name="bot-field"></label></p>
+        <input type="hidden" name="email" id="recado-email">
+        <p class="label" style="margin:0">Recado ao autor</p>
+        <p class="recado-intro">Chegou até aqui? Daniel lê todas as mensagens.</p>
+        <label class="field" for="recado-nome">seu nome</label>
+        <input id="recado-nome" name="nome" maxlength="80" autocomplete="name">
+        <label class="field" for="recado-msg">mensagem</label>
+        <textarea id="recado-msg" name="mensagem" rows="5" maxlength="3000" required></textarea>
+        <button type="submit" class="buy-btn" id="recado-b">Enviar recado</button>
+        <p class="kz-note" id="recado-ok" aria-live="polite"></p>
+      </form>
     </div>
     <div class="endnote" id="endnote" hidden>
       <p><em>Você acabou de ler o prólogo e os cinco primeiros capítulos.</em></p>
@@ -511,6 +581,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
       <p class="free-login" data-entrar hidden style="margin:18px 0 0;text-align:left">Já comprou? <button class="kz-link" type="button" data-acesso>Entrar para ler tudo</button></p>
     </div>
   </div>
+  <div class="luz" id="luz" aria-hidden="true"></div>
+  <div class="falta" id="falta" aria-hidden="true"></div>
+  <button class="foco-sair" id="foco-sair" type="button" hidden>sair do foco</button>
+  <button class="trecho-btn" id="trecho-btn" type="button" hidden>Compartilhar trecho</button>
+  <div class="h1612-toast" id="h1612" aria-hidden="true">16:12</div>
   <div class="snd" id="snd">
     <div class="snd-panel" id="snd-panel" hidden>
       <p class="label">Sons para ler</p>
@@ -1191,65 +1266,271 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
     document.querySelectorAll('.tab').forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-tab')===name ? 'true':'false'); });
     if(push){ try{ history.replaceState(null,'', name==='ler' ? '#ler' : '#livro'); }catch(e){} }
     window.scrollTo(0,0);
+    if(window.KZ_LEITOR) window.KZ_LEITOR.aoMostrar(name);
   }
   document.querySelectorAll('[data-tab]').forEach(function(b){
     b.addEventListener('click', function(ev){ ev.preventDefault(); show(b.getAttribute('data-tab'), true); var g=b.getAttribute('data-goto'); if(g){ var el=document.getElementById(g); if(el) el.scrollIntoView({block:'start'}); } });
   });
 
   // leitor
-  var tpl=document.getElementById('chapters').content;
+  var $=function(id){ return document.getElementById(id); };
+  function ls(k, v){ try{ if(v===undefined) return localStorage.getItem(k); if(v===null) localStorage.removeItem(k); else localStorage.setItem(k, String(v)); }catch(e){ return null; } return null; }
+  var reduz = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tpl=$('chapters').content;
   var amostra=Array.prototype.slice.call(tpl.querySelectorAll('section.ch'));
-  var chaps=amostra, completo=false, marca='', KEYCAP='cap';
-  var sheet=document.getElementById('sheet'), prev=document.getElementById('prev'), next=document.getElementById('next'), pos=document.getElementById('pos'), endnote=document.getElementById('endnote');
-  var tocBox=document.getElementById('toc'), tocWrap=document.getElementById('toc-full-wrap'), tocSel=document.getElementById('toc-full');
+  var chaps=amostra, completo=false, marca='', info={}, cur=0, palavrasCur=0;
+  var sheet=$('sheet'), prev=$('prev'), next=$('next'), pos=$('pos'), endnote=$('endnote');
+  var tocBox=$('toc'), tocWrap=$('toc-full-wrap'), tocSel=$('toc-full'), viewLer=$('view-ler'), leituraBox=$('leitura');
+  var luz=$('luz'), falta=$('falta'), fimBox=$('fim'), fimLog=$('fim-log'), recado=$('recado');
   var tocBtns=Array.prototype.slice.call(document.querySelectorAll('#toc button'));
-  var cur=0;
-  function render(i, scroll){
-    cur=Math.max(0,Math.min(chaps.length-1,i));
-    sheet.innerHTML=''; sheet.appendChild(chaps[cur].cloneNode(true));
+  var WPM=220, tFalta=null, rafP=0, travaAte=0, letraAte=0;
+  var TRILHA={ 'Prólogo':'relogio','Capítulo 3':'piano','Capítulo 4':'relogio','Capítulo 5':'cauda','Capítulo 6':'piano',
+    'Capítulo 17':'sertao','Capítulo 18':'sertao','Capítulo 19':'sertao','Capítulo 20':'sertao','Capítulo 21':'sertao',
+    'Capítulo 28':'relogio','Epílogo':'v1612' };
+  var NOMES={ relogio:'Relógio', piano:'Piano lento', cauda:'Cauda', sertao:'Noite no sertão', v1612:'Valsa das 16h12', chuva:'Chuva' };
+
+  function kicker(sec){ var k=sec.querySelector('.kicker'); return k ? k.textContent.trim() : ''; }
+  function titulo(sec){ var h=sec.querySelector('h2'); return h ? h.textContent.trim() : ''; }
+  function chave(sec){ return kicker(sec)+'|'+titulo(sec); }
+  function rotulo(sec){ var k=kicker(sec), t=titulo(sec); return k ? (k.replace('Capítulo','Cap.')+' · '+t) : t; }
+  function palavras(sec){ var t=(sec.querySelector('.text')||sec).textContent; return (t.match(/\S+/g)||[]).length; }
+  function lendo(){ return !viewLer.hidden && !leituraBox.hidden; }
+
+  // capítulos lidos
+  var lidos={}; try{ lidos=JSON.parse(ls('lidos')||'{}')||{}; }catch(e){ lidos={}; }
+  function marcaLido(k){ if(lidos[k]) return; lidos[k]=1; ls('lidos', JSON.stringify(lidos)); atualizaToc(); }
+  function atualizaToc(){
+    if(completo) Array.prototype.forEach.call(tocSel.options, function(o, i){ o.textContent=(lidos[chave(chaps[i])] ? '✓ ' : '')+o.getAttribute('data-t'); });
+    else tocBtns.forEach(function(b, i){ b.classList.toggle('lido', !!lidos[chave(amostra[i])]); });
+  }
+
+  // tamanho da letra e papel
+  var TAM=[14,16,18,20,23,26,30], tam=parseInt(ls('fs')||'0',10)||0;
+  function aplicaTam(){
+    if(tam) sheet.style.setProperty('--fs', tam+'px'); else sheet.style.removeProperty('--fs');
+    var a=tamAtual(); $('t-menos').disabled = a<=TAM[0]+0.1; $('t-mais').disabled = a>=TAM[TAM.length-1]-0.1;
+  }
+  function tamAtual(){ var el=sheet.querySelector('.text p')||sheet.querySelector('.text'); return tam || (el ? parseFloat(getComputedStyle(el).fontSize) : 17) || 17; }
+  function passoTam(d){
+    var atual=tamAtual(), idx=0, melhor=1e9;
+    TAM.forEach(function(v, i){ var dist=Math.abs(v-atual); if(dist<melhor){ melhor=dist; idx=i; } });
+    idx=Math.max(0, Math.min(TAM.length-1, idx+d));
+    if(TAM[idx]===atual) idx=Math.max(0, Math.min(TAM.length-1, idx+d));
+    var f=fracAtual(); tam=TAM[idx]; ls('fs', tam); aplicaTam(); irPara(f);
+    var n=idx+1, barra=''; for(var k=1;k<=TAM.length;k++) barra+= k<=n ? '■' : '□';
+    letraAte=Date.now()+1300; falta.textContent='letra '+barra; falta.classList.add('on'); clearTimeout(tFalta); tFalta=setTimeout(function(){ falta.classList.remove('on'); }, 1400);
+  }
+  var PAPEIS=['polen','branco','noite'], PNOME={polen:'pólen', branco:'branco', noite:'noite'};
+  var papel=ls('papel'); if(PAPEIS.indexOf(papel)<0) papel='polen';
+  function aplicaPapel(){ if(papel==='polen') sheet.removeAttribute('data-papel'); else sheet.setAttribute('data-papel', papel); $('t-papel-n').textContent=PNOME[papel]; }
+  aplicaTam(); aplicaPapel();
+  $('t-menos').addEventListener('click', function(){ passoTam(-1); });
+  $('t-mais').addEventListener('click', function(){ passoTam(1); });
+  $('t-papel').addEventListener('click', function(){ papel=PAPEIS[(PAPEIS.indexOf(papel)+1)%PAPEIS.length]; ls('papel', papel); aplicaPapel(); });
+
+  // modo foco
+  function foco(on){ document.body.classList.toggle('foco', on); $('foco-sair').hidden=!on; $('t-foco').setAttribute('aria-pressed', on?'true':'false'); }
+  $('t-foco').addEventListener('click', function(){ var f=fracAtual(); foco(!document.body.classList.contains('foco')); irPara(f); });
+  $('foco-sair').addEventListener('click', function(){ var f=fracAtual(); foco(false); irPara(f); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && document.body.classList.contains('foco')){ var f=fracAtual(); foco(false); irPara(f); } });
+
+  // posição dentro do capítulo
+  function geom(){ var r=sheet.getBoundingClientRect(); var topo=r.top+window.scrollY; var util=Math.max(1, sheet.offsetHeight-window.innerHeight*0.6); return { topo: topo, util: util }; }
+  function fracAtual(){ var g=geom(); return Math.max(0, Math.min(1, (window.scrollY-g.topo+80)/g.util)); }
+  function irPara(f){ if(!lendo()) return; var g=geom(); window.scrollTo(0, Math.max(0, g.topo-80+f*g.util)); }
+  function chavePos(){ return 'pos_'+(completo?'c':'a'); }
+  function salvaPos(f){
+    var rec={ k: chave(chaps[cur]), f: Math.round(f*1000)/1000, r: rotulo(chaps[cur]), m: completo?'c':'a' };
+    ls(chavePos(), JSON.stringify(rec)); ls('pos_ultimo', JSON.stringify(rec)); atualizaContinuar();
+  }
+  function lePos(k){ try{ return JSON.parse(ls(k)||'null'); }catch(e){ return null; } }
+  function restaura(){
+    if(!lendo()) return;
+    var p=lePos(chavePos());
+    if(p && p.k===chave(chaps[cur]) && p.f>0.01){ requestAnimationFrame(function(){ irPara(p.f); }); }
+  }
+  function atualizaContinuar(){
+    var b=$('continuar'); if(!b) return;
+    var p=lePos('pos_ultimo');
+    if(p && (p.f>0.02 || !/^Prólogo/.test(p.r))){ $('continuar-txt').textContent=p.r; b.hidden=false; } else b.hidden=true;
+  }
+  $('continuar').addEventListener('click', function(){ document.querySelector('.tab[data-tab="ler"]').click(); });
+
+  // linha de luz, tempo que falta, lido, fim
+  rafP=0; travaAte=0;
+  function aoRolar(){
+    rafP=0;
+    if(!lendo()){ luz.style.width='0'; return; }
+    var f=fracAtual();
+    luz.style.width=(f*100).toFixed(2)+'%';
+    if(Date.now()<travaAte) return;
+    salvaPos(f);
+    if(f>0.92){ marcaLido(chave(chaps[cur])); if(completo && /^Epílogo/.test(kicker(chaps[cur]))) disparaFim(); }
+    if(Date.now()<letraAte) return;
+    var resta=Math.ceil(palavrasCur*(1-f)/WPM);
+    falta.textContent = f>0.97 ? 'fim do capítulo' : ('faltam ~'+Math.max(1,resta)+' min');
+    falta.classList.add('on'); clearTimeout(tFalta); tFalta=setTimeout(function(){ falta.classList.remove('on'); }, 1600);
+  }
+  window.addEventListener('scroll', function(){ if(!rafP) rafP=requestAnimationFrame(aoRolar); }, { passive: true });
+
+  function linhaLog(txt, ok){ var d=document.createElement('div'); d.textContent=txt; if(ok){ var s=document.createElement('span'); s.className='ok'; s.textContent=ok; d.appendChild(s); } fimLog.appendChild(d); }
+  function nomeKz(){ var n=window.KZ_GATE ? window.KZ_GATE.nome() : ''; return n || (info.nome||'LEITOR').toUpperCase(); }
+  function fimEstatico(){ fimLog.innerHTML=''; linhaLog('> registro de '+nomeKz()); linhaLog('> ultima_linha: ', 'sem previsão'); }
+  var animandoFim=false;
+  function disparaFim(){
+    if(ls('kz_fim')==='1' || animandoFim) return;
+    animandoFim=true; ls('kz_fim','1');
+    var n=nomeKz(), orig=window.KZ_GATE ? window.KZ_GATE.dataOrig(n) : '';
+    fimLog.innerHTML='';
+    var passos=[['> releitura do registro de '+n+'...',''],['> ultima_linha anterior: '+orig,''],['> recalculando...',''],['> ultima_linha: ','sem previsão']], k=0;
+    (function passo(){ if(k>=passos.length){ animandoFim=false; if(window.KZ_GATE) window.KZ_GATE.atualiza(); return; } linhaLog(passos[k][0], passos[k][1]); k++; setTimeout(passo, reduz?0:(k===3?1500:800)); })();
+  }
+
+  function render(i, como){
+    cur=Math.max(0, Math.min(chaps.length-1, i));
+    var orig=chaps[cur], sec=orig.cloneNode(true), k=kicker(orig);
+    palavrasCur=palavras(orig);
+    var ref=sec.querySelector('.opening');
+    if(ref && palavrasCur>120){
+      var meta=document.createElement('p'); meta.className='meta';
+      meta.appendChild(document.createTextNode('cerca de '+Math.max(1, Math.round(palavrasCur/WPM))+' min de leitura'));
+      var t=TRILHA[k];
+      if(t){
+        meta.appendChild(document.createElement('br'));
+        var b=document.createElement('button'); b.type='button'; b.className='trilha'; b.textContent='♪ para ler ouvindo: '+NOMES[t];
+        b.addEventListener('click', function(){ var o=document.querySelector('.snd-opt[data-snd="'+t+'"]'); if(o && o.getAttribute('aria-pressed')!=='true') o.click(); });
+        meta.appendChild(b);
+      }
+      ref.parentNode.insertBefore(meta, ref);
+    }
+    sheet.innerHTML=''; sheet.appendChild(sec);
     if(completo && marca){ var m=document.createElement('p'); m.className='exemplar'; m.textContent='Exemplar de '+marca; sheet.appendChild(m); }
     var ultimo = cur===chaps.length-1;
-    prev.disabled = cur===0;
+    prev.disabled = cur===0; $('t-prev').disabled = cur===0;
     next.textContent = ultimo ? (completo ? 'Fim' : 'Fim da amostra') : 'Próximo →';
-    next.disabled = completo && ultimo;
+    next.disabled = completo && ultimo; $('t-next').disabled = completo && ultimo;
     pos.textContent = (cur+1)+' / '+chaps.length;
     endnote.hidden = true;
+    var ehEpi=/^Epílogo/.test(k), fimDoLivro=completo && (ehEpi || titulo(orig)==='Agradecimentos' || titulo(orig)==='Sobre o autor');
+    fimBox.hidden = !(completo && ehEpi && ls('kz_fim')==='1'); if(!fimBox.hidden) fimEstatico();
+    if(completo && ehEpi && ls('kz_fim')!=='1'){ fimBox.hidden=false; fimLog.innerHTML=''; linhaLog('> registro em leitura...'); }
+    recado.hidden = !fimDoLivro;
     if(completo) tocSel.value=String(cur);
-    else tocBtns.forEach(function(b,k){ b.setAttribute('aria-current', k===cur ? 'true':'false'); });
-    try{ localStorage.setItem(KEYCAP, String(cur)); }catch(e){}
-    if(scroll){ document.getElementById('view-ler').scrollIntoView({block:'start'}); window.scrollTo(0,0); }
+    else tocBtns.forEach(function(b, n){ b.setAttribute('aria-current', n===cur ? 'true':'false'); });
+    atualizaToc();
+    ls(completo?'capf':'cap', cur);
+    if(como==='restaura'){ travaAte=Date.now()+700; restaura(); }
+    else if(como==='topo'){ salvaPos(0); $('view-ler').scrollIntoView({block:'start'}); window.scrollTo(0,0); }
+    luz.style.width='0';
   }
-  prev.addEventListener('click',function(){ render(cur-1,true); });
-  next.addEventListener('click',function(){
-    if(cur===chaps.length-1){ if(!completo){ endnote.hidden=false; endnote.scrollIntoView({block:'center'}); } }
-    else render(cur+1,true);
+  function avancar(){ if(cur===chaps.length-1){ if(!completo){ endnote.hidden=false; endnote.scrollIntoView({block:'center'}); } } else { marcaLido(chave(chaps[cur])); render(cur+1,'topo'); } }
+  prev.addEventListener('click', function(){ render(cur-1,'topo'); });
+  next.addEventListener('click', avancar);
+  $('t-prev').addEventListener('click', function(){ render(cur-1,'topo'); });
+  $('t-next').addEventListener('click', avancar);
+  tocBtns.forEach(function(b, k){ b.addEventListener('click', function(){ render(k,'topo'); }); });
+  tocSel.addEventListener('change', function(){ render(parseInt(tocSel.value,10)||0,'topo'); });
+  var saved=parseInt(ls('cap')||'0',10)||0;
+  render(saved);
+  aplicaTam();
+  atualizaContinuar();
+
+  // recado ao autor
+  $('recado-f').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f=this, ok=$('recado-ok'), b=$('recado-b');
+    if(!$('recado-msg').value.trim()){ $('recado-msg').focus(); return; }
+    b.disabled=true; ok.textContent='enviando...';
+    var feito=function(){ ok.textContent='Recado enviado. Obrigado por ler até aqui.'; $('recado-msg').value=''; b.disabled=false; };
+    if(!/netlify\.app$|\.com\.br$/.test(location.hostname)){ feito(); return; }
+    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(new FormData(f)).toString() })
+      .then(function(r){ if(r.ok) feito(); else { ok.textContent='Não deu para enviar agora. Tente de novo.'; b.disabled=false; } }, function(){ ok.textContent='Sem conexão. Tente de novo.'; b.disabled=false; });
   });
-  tocBtns.forEach(function(b,k){ b.addEventListener('click',function(){ render(k,true); }); });
-  tocSel.addEventListener('change',function(){ render(parseInt(tocSel.value,10)||0,true); });
-  var saved=0; try{ saved=parseInt(localStorage.getItem('cap')||'0',10)||0; }catch(e){}
-  render(saved,false);
+
+  // compartilhar trecho
+  var tBtn=$('trecho-btn'), trecho='', tSel=null;
+  function selDoLivro(){
+    var s=window.getSelection(); if(!s || s.isCollapsed || !s.rangeCount) return null;
+    var r=s.getRangeAt(0); if(!sheet.contains(r.commonAncestorContainer)) return null;
+    var t=s.toString().replace(/\s+/g,' ').trim(); if(t.length<12) return null;
+    return { t: t, r: r };
+  }
+  document.addEventListener('selectionchange', function(){
+    clearTimeout(tSel);
+    tSel=setTimeout(function(){
+      var x=selDoLivro(); if(!x || !lendo()){ tBtn.hidden=true; return; }
+      trecho=x.t; var rc=x.r.getBoundingClientRect();
+      tBtn.textContent = x.t.length>320 ? 'Trecho longo demais' : 'Compartilhar trecho';
+      tBtn.disabled = x.t.length>320;
+      tBtn.hidden=false;
+      var w=tBtn.offsetWidth||170, left=Math.min(window.innerWidth-w-10, Math.max(10, rc.left+rc.width/2-w/2));
+      var top=rc.bottom+12; if(top>window.innerHeight-60) top=rc.top-52; top=Math.min(window.innerHeight-56, Math.max(10, top));
+      tBtn.style.left=left+'px'; tBtn.style.top=top+'px';
+    }, 250);
+  });
+  function quebra(ctx, texto, larg){ var ps=texto.split(' '), ls2=[], l=''; ps.forEach(function(p){ var t=l?l+' '+p:p; if(ctx.measureText(t).width>larg && l){ ls2.push(l); l=p; } else l=t; }); if(l) ls2.push(l); return ls2; }
+  function cartao(texto){
+    var W=1080, H=1350, c=document.createElement('canvas'); c.width=W; c.height=H; var x=c.getContext('2d');
+    x.fillStyle='#12100D'; x.fillRect(0,0,W,H);
+    var g=x.createLinearGradient(0,0,W,0); g.addColorStop(0,'rgba(224,160,74,0)'); g.addColorStop(.18,'#E0A04A'); g.addColorStop(.82,'#E0A04A'); g.addColorStop(1,'rgba(224,160,74,0)');
+    x.fillStyle=g; x.fillRect(0,210,W,3);
+    x.fillStyle='#E0A04A'; x.font='500 30px "IBM Plex Mono", monospace'; x.textAlign='left'; x.fillText('16:12', 96, 150);
+    var tam=texto.length>200?46:(texto.length>110?54:62);
+    x.font='italic '+tam+'px Lora, Georgia, serif'; x.fillStyle='#ECE5D8';
+    var linhas=quebra(x, '“'+texto+'”', W-192), lh=tam*1.45, y0=Math.max(330, (H-linhas.length*lh)/2-40);
+    linhas.forEach(function(l, i){ x.fillText(l, 96, y0+i*lh); });
+    x.fillStyle='#A69C8D'; x.font='300 30px Jost, "Century Gothic", sans-serif';
+    x.fillText('16:12 — A Última Linha', 96, H-170);
+    x.font='300 26px Jost, "Century Gothic", sans-serif'; x.fillText('Daniel Ozório Olmes', 96, H-125);
+    x.fillStyle='#E0A04A'; x.font='400 22px "IBM Plex Mono", monospace'; x.fillText('1612aultimalinha.netlify.app', 96, H-72);
+    return c;
+  }
+  tBtn.addEventListener('mousedown', function(e){ e.preventDefault(); });
+  tBtn.addEventListener('click', function(){
+    if(!trecho) return; tBtn.hidden=true;
+    var go=function(){
+      var c=cartao(trecho);
+      c.toBlob(function(blob){
+        if(!blob) return;
+        var arq=null; try{ arq=new File([blob], '16h12-trecho.png', {type:'image/png'}); }catch(e){}
+        if(arq && navigator.canShare && navigator.canShare({ files:[arq] })){
+          navigator.share({ files:[arq], text:'16:12 — A Última Linha · '+location.origin }).catch(function(){});
+        } else {
+          var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='16h12-trecho.png'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+        }
+      }, 'image/png');
+    };
+    if(document.fonts && document.fonts.load) Promise.all([document.fonts.load('italic 54px Lora'), document.fonts.load('300 30px Jost'), document.fonts.load('400 22px "IBM Plex Mono"')]).then(go, go); else go();
+  });
+
+  // segredo das 16h12
+  function confere1612(){ var d=new Date(), on = d.getHours()===16 && d.getMinutes()===12 && lendo(); document.body.classList.toggle('h1612', on); }
+  confere1612(); setInterval(confere1612, 15000);
+
   window.KZ_LEITOR = {
-    abrirCompleto: function(rows, nomeMarca){
+    aoMostrar: function(name){ if(name==='ler'){ travaAte=Date.now()+700; setTimeout(restaura, 30); } else { luz.style.width='0'; tBtn.hidden=true; if(document.body.classList.contains('foco')) foco(false); } confere1612(); },
+    abrirCompleto: function(rows, nomeMarca, inf){
       var box=document.createElement('template');
       box.innerHTML=rows.map(function(r){ return r.html; }).join('');
-      chaps=Array.prototype.slice.call(box.content.querySelectorAll('section.ch'));
-      if(!chaps.length){ chaps=amostra; return false; }
-      completo=true; marca=nomeMarca||''; KEYCAP='capf';
+      var novos=Array.prototype.slice.call(box.content.querySelectorAll('section.ch'));
+      if(!novos.length) return false;
+      chaps=novos; completo=true; marca=nomeMarca||''; info=inf||{};
       tocSel.innerHTML='';
       var ini=0;
-      rows.forEach(function(r,k){ var o=document.createElement('option'); o.value=String(k); o.textContent=(r.rotulo ? r.rotulo.replace('Capítulo','Cap.')+' · ' : '')+r.titulo; tocSel.appendChild(o); if(!ini && r.rotulo==='Capítulo 6') ini=k; });
+      rows.forEach(function(r, k){ var o=document.createElement('option'); o.value=String(k); o.setAttribute('data-t', (r.rotulo ? r.rotulo.replace('Capítulo','Cap.')+' · ' : '')+r.titulo); tocSel.appendChild(o); if(!ini && r.rotulo==='Capítulo 6') ini=k; });
       tocBox.hidden=true; tocWrap.hidden=false;
-      document.getElementById('free-txt').textContent='Livro completo · '+rows.filter(function(r){return /^Cap/.test(r.rotulo);}).length+' capítulos e epílogo';
-      var s=-1; try{ var v=localStorage.getItem('capf'); if(v!==null) s=parseInt(v,10); }catch(e){}
-      render(s>=0 ? s : ini, false);
+      $('free-txt').textContent='Livro completo · '+rows.filter(function(r){ return /^Cap/.test(r.rotulo); }).length+' capítulos e epílogo';
+      if(info.nome) $('recado-nome').value=info.nome;
+      if(info.email) $('recado-email').value=info.email;
+      var v=ls('capf'), s=(v!==null && v!=='') ? parseInt(v,10) : -1;
+      render(s>=0 ? s : ini, 'restaura');
       return true;
     },
     fecharCompleto: function(){
-      chaps=amostra; completo=false; marca=''; KEYCAP='cap';
+      chaps=amostra; completo=false; marca=''; info={};
       tocBox.hidden=false; tocWrap.hidden=true;
-      document.getElementById('free-txt').textContent='Leitura gratuita · prólogo e capítulos 1 a 5';
-      var s=0; try{ s=parseInt(localStorage.getItem('cap')||'0',10)||0; }catch(e){}
-      render(s,false);
+      $('free-txt').textContent='Leitura gratuita · prólogo e capítulos 1 a 5';
+      render(parseInt(ls('cap')||'0',10)||0);
     }
   };
   show(location.hash==='#ler' ? 'ler' : 'livro', false);
@@ -1263,7 +1544,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
         btn=document.getElementById('kz-btn');
     function p2(n){ return (n<10?'0':'')+n; }
     function dataDe(r, y0, y1){ var y=y0+Math.floor(r()*(y1-y0+1)), m=1+Math.floor(r()*12), dm=[31,(y%4?28:29),31,30,31,30,31,31,30,31,30,31][m-1], d=1+Math.floor(r()*dm), h=Math.floor(r()*24), mi=Math.floor(r()*60); return p2(d)+'/'+p2(m)+'/'+y+' — '+p2(h)+'h'+p2(mi); }
-    function minha(nome){ return dataDe(rnd(hash(nome+'#kairos')), 2058, 2099); }
+    function dataOrig(nome){ return dataDe(rnd(hash(nome+'#kairos')), 2058, 2099); }
+    function terminou(){ try{ return localStorage.getItem('kz_fim')==='1'; }catch(e){ return false; } }
+    function minha(nome){ return terminou() ? 'sem previsão' : dataOrig(nome); }
     function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
     var fast = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     function limpa(n){ return String(n||'').replace(/\s+/g,' ').trim().slice(0,60).toUpperCase(); }
@@ -1319,7 +1602,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
     document.getElementById('kz-outro').addEventListener('click', function(){ try{ localStorage.removeItem(KEY); }catch(e){} res.hidden=true; log.innerHTML=''; form.hidden=false; inp.value=''; inp.focus(); });
     var salvo=''; try{ salvo=localStorage.getItem(KEY)||''; }catch(e){}
     if(salvo) abrir(salvo);
-    window.KZ_GATE = { passou: function(){ return !leitura.hidden; }, entrar: function(nome){ nome=limpa(nome); if(!nome) return; try{ localStorage.setItem(KEY,nome); }catch(e){} abrir(nome); } };
+    window.KZ_GATE = { nome: function(){ var n=''; try{ n=localStorage.getItem(KEY)||''; }catch(e){} return n; }, dataOrig: dataOrig, atualiza: function(){ var n=''; try{ n=localStorage.getItem(KEY)||''; }catch(e){} if(n && !leitura.hidden) abrir(n); }, passou: function(){ return !leitura.hidden; }, entrar: function(nome){ nome=limpa(nome); if(!nome) return; try{ localStorage.setItem(KEY,nome); }catch(e){} abrir(nome); } };
   })();
 
 
@@ -1366,7 +1649,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
         }
         var nome=(cad && cad.nome) || email;
         if(window.KZ_GATE && !window.KZ_GATE.passou()) window.KZ_GATE.entrar(cad && cad.nome ? cad.nome : email.split('@')[0]);
-        window.KZ_LEITOR.abrirCompleto(caps, nome+' · '+email);
+        window.KZ_LEITOR.abrirCompleto(caps, nome+' · '+email, { nome: nome, email: email });
         logado=true; mostraEntradas(false); fecharPainel();
         if(veioDoLink){ veioDoLink=false; try{ history.replaceState(null,'',location.pathname+'#ler'); }catch(e){} document.querySelector('.tab[data-tab="ler"]').click(); }
         accTxt.innerHTML=''; accTxt.appendChild(document.createTextNode('exemplar de ')); var bb=document.createElement('b'); bb.textContent=nome; accTxt.appendChild(bb); acc.hidden=false;
@@ -1401,6 +1684,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betw
         diz('> acesso liberado', true);
         return tenta(r.data.session);
       });
+    });
+    document.getElementById('acc-pdf').addEventListener('click', function(){
+      var b=this, txt=b.textContent; b.textContent='preparando...';
+      sb.storage.from('livro').createSignedUrl('16h12_A_Ultima_Linha.pdf', 300, { download: '16h12 - A Ultima Linha.pdf' }).then(function(r){
+        b.textContent=txt;
+        if(r.error || !r.data || !r.data.signedUrl){ alert('O PDF ainda não está disponível aqui. Ele também chega no e-mail da compra.'); return; }
+        window.location.href=r.data.signedUrl;
+      }, function(){ b.textContent=txt; });
     });
     document.getElementById('acc-sair').addEventListener('click', function(){
       sb.auth.signOut().then(function(){ logado=false; acc.hidden=true; mostraEntradas(true); window.KZ_LEITOR.fecharCompleto(); });
